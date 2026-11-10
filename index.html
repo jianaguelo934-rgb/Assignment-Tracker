@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-content">
+        <h1>📚 Assignment Tracker</h1>
+        <p>Stay on top of your schoolwork</p>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Assignment Form Card -->
+      <section class="card form-card">
+        <h2 id="form-title">Add Assignment</h2>
+        <div id="error-container"></div>
+        <form id="assignment-form" novalidate>
+          <input type="hidden" id="assignment-id" />
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="e.g. Mathematics" />
+          </div>
+          <div class="form-group">
+            <label for="title">Assignment Title</label>
+            <input type="text" id="title" placeholder="e.g. Algebra Homework" />
+          </div>
+          <div class="form-group">
+            <label for="dueDate">Due Date</label>
+            <input type="date" id="dueDate" />
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn btn-primary">Add Assignment</button>
+            <button type="button" id="cancel-btn" class="btn btn-secondary" hidden>Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Statistics Dashboard Card -->
+      <section class="card stats-card">
+        <h2>Statistics Dashboard</h2>
+        <div id="stats-container" class="stats-grid"></div>
+      </section>
+
+      <!-- Assignment List Card -->
+      <section class="card list-card">
+        <div class="list-header">
+          <h2>Assignments</h2>
+          <div class="list-controls">
+            <input
+              type="search"
+              id="search-input"
+              class="search-input"
+              placeholder="Search by title..."
+              aria-label="Search assignments by title"
+            />
+            <div class="filter-bar">
+              <button class="filter-btn active" data-filter="all">
+                All <span class="badge" data-badge="all">0</span>
+              </button>
+              <button class="filter-btn" data-filter="pending">
+                Pending <span class="badge" data-badge="pending">0</span>
+              </button>
+              <button class="filter-btn" data-filter="completed">
+                Completed <span class="badge" data-badge="completed">0</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul id="assignment-list" class="assignment-list"></ul>
+        <p id="empty-state" class="empty-state" hidden>No assignments found.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="modal-overlay" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h3 id="modal-title">Delete Assignment?</h3>
+      <p>Are you sure you want to delete this assignment? This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn btn-secondary">Cancel</button>
+        <button id="modal-confirm" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry point: controller bootstraps model and views -->
+  <script type="module" src="js/controller.js"></script>
+</body>
+</html>
