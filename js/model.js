@@ -62,6 +62,13 @@ class Model {
         dueDate: this._futureDate(1),
         completed: false,
       },
+      {
+        id: this._generateId(),
+        subject: 'History',
+        title: 'World War II Research Paper',
+        dueDate: this._futureDate(5),
+        completed: false,
+      },
     ];
     this._saveToStorage();
   }
